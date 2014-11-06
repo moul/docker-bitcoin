@@ -1,9 +1,10 @@
-FROM ubuntu
+FROM ubuntu:latest
 MAINTAINER Manfred Touron m@42.am
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ precise main universe" >> /etc/apt/sources.list
-RUN apt-get -q -y update
-RUN apt-get install -y bitcoind
+RUN apt-get -q -y update && \
+    apt-get install -y bitcoind && \
+    apt-get clean
+
 EXPOSE 8333
 
 ENTRYPOINT ["bitcoind"]
